@@ -1,0 +1,19 @@
+<p>demo works!</p>
+<p>
+    {{demoData}}
+    <br>
+    {{demoData.toUpperCase()}}
+</p>
+<p>
+    <input type="text" value={{demoData}}>
+</p>
+<p>
+    <input type="text" [value]=demoData>
+</p>
+<p>
+    <button (click)="onAlert()">Alert</button>
+</p>
+
+<p>
+    <input type="text" [(ngModel)]="demoData" />
+  </p>

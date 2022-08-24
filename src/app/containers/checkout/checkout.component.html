@@ -1,0 +1,36 @@
+<form [formGroup]="checkoutForm" (submit)="submitData()">
+    <div>
+      <label>Name</label>
+      <input type="text" formControlName="name" />
+      <div *ngIf="checkoutForm.get('name')?.touched">
+        <!-- ? : safe navigation operator -->
+        <small *ngIf="checkoutForm.get('name')?.hasError('required')">Name is required.</small>
+        <small *ngIf="checkoutForm.get('name')?.hasError('minlength')">minimum {{ checkoutForm.get("name")?.getError("minlength").requiredLength }} characters required</small>
+      </div>
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="text" formControlName="email" />
+      <div *ngIf="checkoutForm.get('email')?.touched">
+        <!-- ? : safe navigation operator -->
+        <small *ngIf="checkoutForm.get('email')?.hasError('required')">Email is required.</small>
+        <small *ngIf="checkoutForm.get('email')?.hasError('pattern')">Check your email</small>
+      </div>
+    </div>
+    <div>
+      <label>Pincode</label>
+      <input type="text" formControlName="pincode" />
+      <div *ngIf="checkoutForm.get('pincode')?.touched">
+        <!-- ? : safe navigation operator -->
+        <small *ngIf="checkoutForm.get('pincode')?.hasError('required')"
+          >Pincode is required.</small
+        >
+        <small *ngIf="checkoutForm.get('pincode')?.hasError('zipcode')"
+          >Invalid zipcode</small
+        >
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <button type="button" (click)="patchData()"><Label>Load</Label></button>
+  <pre>{{ checkoutForm.get("name")?.errors | json }}</pre>

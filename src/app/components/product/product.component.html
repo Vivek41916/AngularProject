@@ -1,0 +1,17 @@
+<div>
+    <img [src]="data.productImage">
+
+    <h5>
+        {{data.productName | uppercase}}
+    </h5>
+    <h5>
+        {{data.productPrice | conversion:currencyCode | currency:currencyCode :"code":"7.1-1"}}
+    </h5>
+    <button 
+    *ngIf="data.productStock>0;else stock"
+    (click)="notifyParent()">Add to cart</button>
+</div>
+
+<ng-template #stock>
+    <p>out of stock</p>
+</ng-template>
